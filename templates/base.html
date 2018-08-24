@@ -1,0 +1,32 @@
+<html>
+        <!--导入头文件模版-->
+     {% include 'head.html' %}
+        <body>
+                <div class="container-fluid">
+                        <div class="row">
+                                <!--导入导航栏模版-->
+                              {% include 'nav.html' %}
+                        </div>
+                        <div id="content" class="col-md-3">
+                             <div class="panel panel-primary">
+                                 <div class="panel-heading">
+                                 <h1>选择查询时间</h1>
+
+                                 </div>
+                             <div class="panel-body">
+                                 {% block content %}
+                                     {% endblock %}
+                             </div>
+                            </div>
+
+                        </div>
+                    <div class="col-md-9">
+                        <div class="panel panel-primary">
+                                 {% block footer %}
+                                 {% endblock %}
+                        </div>
+                    </div>
+
+                </div>
+        </body>
+</html>

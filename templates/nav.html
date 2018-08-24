@@ -1,0 +1,57 @@
+{% set itemList=[
+{'name':'导入工具未完成','href':'/'},
+{'name':'主机查询','href':'ip'},
+]
+%}
+{% set sublist=[
+{'name':'test','href':'/'},
+{'name':'test2','href':'/'},
+]
+%}
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="http://21.254.247.73" target="_blank">监控系统</a>
+    </div>
+    <div>
+    <ul class="nav navbar-nav">
+        {% for item in itemList %}
+        <li><a href="{{item.href}}">{{item.name 
+
+}}</a></li>
+        {% endfor %}
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">zabbix-form<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    {% for list in sublist %}
+                    <li><a href="{{list.href}}"></a>{{list.name 
+
+}}</li>
+                    {% endfor %}
+                </ul>
+        </li>
+    </ul>
+    </div>
+    </div>
+</nav>
+
+<head>
+
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css 
+
+">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js 
+
+"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js 
+
+"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js 
+
+"></script>
+    <link rel="icon" href="/static/img/tou.ico" >
+    <title>index{% block title %}{% endblock %}</title>
+
+</head>

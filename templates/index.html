@@ -1,0 +1,71 @@
+{% set biaoming=[
+{'name':'序号'},
+{'name':'主机名'},
+{'name':'端口'},
+{'name':'入平均值'},
+{'name':'入最大值'},
+{'name':'出平均值'},
+{'name':'出最大值'},
+{'name':'额定带宽'},
+]
+%}
+{% extends "base.html" %}
+{% block title %}ZABBIX SELECT{% endblock %}
+{% block content %}
+
+<input type="date" class='input-group date' name="starttime" id="starttime" >
+<input type="date" class='input-group date' name="endtime" id="endtime" >
+<select style="width:145px;height:28px" name="data3" id="data3">
+  <option value="gg">骨干接口流量</option>
+  <option value="ck">出口流量</option>
+</select>
+<br>
+<button id="postid" calss="btn" onclick="AA()">提交</button>
+
+<script>
+function AA(){
+		$.post(
+		    "/Flask",
+            {
+            starttime:$("#starttime").val(),
+            endtime:$("#endtime").val(),
+            data3:$("#data3").val(),
+            },
+		    function(data) {
+		        console.log(data)
+		        var html="";
+		        for(var obj in data){
+		        html+="<tr><td>"+obj+"</td>";
+                html+="<td>"+data[obj]['hostname']+"</td>";
+                html+="<td>"+data[obj]['name']+"</td>";
+                html+="<td>"+data[obj]['in-avg']+"</td>";
+                html+="<td>"+data[obj]['in-max']+"</td>";
+                html+="<td>"+data[obj]['out-avg']+"</td>";
+                html+="<td>"+data[obj]['out-max']+"</td>";
+                html+="<td>"+data[obj]['bandwith']+"</td>";
+                html+="</td>";
+                }
+
+		        $("#date1").html(html)
+                },"json"
+		  );
+	}
+</script>
+{% endblock %}
+{% block footer %}
+<table id="mytab" border="1"> <a style="font-size:20px">结果展示区域</a>
+    <div class="pull-right">
+    <a class="btn btn-success" href="/download/gg.xls" >导出骨干Excel</a>
+        <a class="btn btn-success" href="/download/ck.xls">导出出口Excel</a>
+    </div>
+    <thead><tr >
+    {% for list in biaoming %}
+    <th>{{list.name
+
+}}</th>
+    {% endfor %}
+    </tr>
+    </thead>
+    <tbody id="date1"></tbody>
+</table>
+{% endblock %}

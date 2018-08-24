@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Zabbix 报表</title>
+    <style type="text/css">
+        h2{color:green}
+    </style>
+</head>
+<body style="background-color:PowderBlue;"><center> <a href="http://21.254.247.73" target="_blank"> <img src="/static/zabbix.jpg" alt="zabbix"width="200"></a></center>
+<hr/>
+<h2>请选择日期 </h2>
+<hr />
+<br>
+<form
+ method="POST" action="/Flask" >
+    <input type="date"  name="starttime" placeholder="起始日期，如20180801">
+    <br>
+    <input type="date"  name="endtime" placeholder="截止日期">
+    <br>
+<select style="width:137px;height:28px"  name="data3">
+  <option value="gg">骨干接口流量</option>
+  <option value="ck">出口流量</option>
+</select>
+    <input type="submit"  value="submit" name="ok"/>
+    <br><br>
+    <a class="btn btn-success" href="/download/{{file1}}" download="报表.xls">{{jinjia1}}</a>
+        <a class="btn btn-success" href="/download/{{file2}}" download="报表.xls">{{jinjia2}}</a>
+    <br>
+        <a href="https://www.baidu.com" style="text-decoration:none;"  target="_blank">如有疑问，请点击</a>
+
+</form>
+</body>
+</html>
